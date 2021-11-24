@@ -3,7 +3,7 @@ import React from "react";
 const NotesIcon = () => <i className="text-2xl ri-file-text-line" />;
 const SettingsIcon = () => <i className="text-2xl ri-settings-2-line" />;
 
-export const APP_NAME = "Wheel";
+export const APP_NAME = "NeetoUIChallenge";
 
 export const PASSWORD_PATH = "/my/password/edit";
 export const PROFILE_PATH = "/my/profile";

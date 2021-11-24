@@ -1,5 +1,5 @@
 # For executing this script, run the following from your terminal:
-# curl -s -L "https://raw.githubusercontent.com/bigbinary/wheel/master/.scripts/sync_with_wheel.sh" | bash
+# curl -s -L "https://raw.githubusercontent.com/bigbinary/neeto-ui-challenge/master/.scripts/sync_with_neeto-ui-challenge.sh" | bash
 yarn remove babel-eslint 2> /dev/null
 yarn add -D @babel/eslint-parser
 yarn add -D prettier
@@ -15,7 +15,7 @@ eslint-plugin-jam3 \
 eslint-plugin-cypress \
 eslint-plugin-unused-imports
 
-raw_base_url="https://raw.githubusercontent.com/bigbinary/wheel/master"
+raw_base_url="https://raw.githubusercontent.com/bigbinary/neeto-ui-challenge/master"
 declare -a configs=(
   ".eslintrc.js"
   ".eslintignore"

@@ -20,10 +20,10 @@ function Hero() {
   return (
     <div className="flex flex-row items-center justify-center h-screen">
       <div className="flex flex-col items-center justify-center max-w-3xl p-8 m-auto">
-        <h1 className="mb-3 text-4xl font-bold">Wheel</h1>
+        <h1 className="mb-3 text-4xl font-bold">NeetoUIChallenge</h1>
         <p className="mx-auto mb-6 text-lg text-center text-gray-800">
-          Don&apos;t reinvent the wheel. Use sane defaults to bootstrap your
-          react-rails project!
+          Don&apos;t reinvent the neeto-ui-challenge. Use sane defaults to
+          bootstrap your react-rails project!
         </p>
         <Features features={features} />
         <div className="flex items-center justify-center mt-6">

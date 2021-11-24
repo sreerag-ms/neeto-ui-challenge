@@ -51,7 +51,7 @@ const Sidenav = () => {
       navLinks={SIDENAV_LINKS}
       appName={APP_NAME}
       organizationInfo={{
-        name: "Wheel",
+        name: "NeetoUIChallenge",
         subdomain: "bigbinary.com",
       }}
       profileInfo={{
