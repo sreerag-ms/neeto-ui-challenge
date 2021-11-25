@@ -23,7 +23,7 @@ const Notes = () => {
             onButtonClick={handleAddButtonClick}
             title="Notes"
           />
-          <div className="flex flex-col">
+          <div className="flex flex-col mb-3">
             {NOTES_DATA.map((note, index) => (
               <Card
                 key={index}

@@ -9,6 +9,7 @@ import { timeToDateAndMonth, getTimeElapsed } from "helpers/timeFunctions";
 const Card = ({ title, description, user, createdAt }) => {
   const timeElapsed = getTimeElapsed(Number(createdAt));
   const timeCreated = timeToDateAndMonth(Number(createdAt));
+
   return (
     <div className="flex flex-col border-2 my-2 p-4 rounded-sm shadow-sm">
       <div className="flex flex-row justify-between">
@@ -22,7 +23,7 @@ const Card = ({ title, description, user, createdAt }) => {
         {description}
       </div>
       <div className="flex flex-row justify-between mt-3">
-        <button className="bg-gray-100  px-2 py-1 border-solid border border-gray-500 text-gray-500 rounded-sm text-xs">
+        <button className="px-2 py-1 border-solid border bg-gray-100 border-gray-500 text-gray-500 rounded-sm text-xs">
           Getting started
         </button>
         <Tooltip content={timeCreated} position="bottom">
@@ -36,10 +37,12 @@ const Card = ({ title, description, user, createdAt }) => {
     </div>
   );
 };
+
 Card.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   user: PropTypes.object.isRequired,
 };
+
 export default Card;

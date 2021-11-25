@@ -10,31 +10,27 @@ const TitleBar = ({
   toggleMenu,
   buttonLabel,
   onButtonClick,
-}) => {
-  return (
-    <div>
-      <Header
-        menuBarToggle={toggleMenu}
-        actionBlock={
-          <div className="flex flex-row">
-            {children}
-            <Input
-              prefix={<Search />}
-              placeholder="Search for something"
-              className="mx-3"
-            />
-            <Button
-              label={buttonLabel}
-              icon={Plus}
-              onClick={onButtonClick}
-              style="primary"
-            />
-          </div>
-        }
-        title={title}
-      />
-    </div>
-  );
-};
+}) => (
+  <Header
+    menuBarToggle={toggleMenu}
+    actionBlock={
+      <div className="flex flex-row">
+        {children}
+        <Input
+          prefix={<Search />}
+          placeholder="Search for something"
+          className="mx-3"
+        />
+        <Button
+          label={buttonLabel}
+          icon={Plus}
+          onClick={onButtonClick}
+          style="primary"
+        />
+      </div>
+    }
+    title={title}
+  />
+);
 
 export default TitleBar;

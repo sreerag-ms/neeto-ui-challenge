@@ -14,6 +14,11 @@ const SideBar = () => {
       profileInfo={{
         imageUrl: "https://randomuser.me/api/portraits/women/90.jpg",
         name: "Oliver Smith",
+        dropdownProps: [
+          {
+            label: "Edit",
+          },
+        ],
       }}
       navLinks={[
         {
