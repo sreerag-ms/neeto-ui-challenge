@@ -26,7 +26,7 @@ const Notes = () => {
       setNotes(newNotes);
       Toastr.success("Note deleted successfully");
     } else {
-      Toastr.success("Something went wrong!");
+      Toastr.error("Something went wrong!");
     }
     setShowDeletePrompt(false);
   };
