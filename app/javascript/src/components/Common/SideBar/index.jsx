@@ -19,13 +19,13 @@ const SideBar = () => {
       navLinks={[
         {
           icon: Text,
-          label: "Home",
-          to: "/",
+          label: "Notes",
+          to: "/notes",
         },
         {
           icon: UserCircle,
-          label: "something",
-          to: "/something",
+          label: "Contacts",
+          to: "/contacts",
         },
         {
           icon: NeetoInsights,

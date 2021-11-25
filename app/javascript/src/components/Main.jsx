@@ -17,6 +17,8 @@ const Main = () => {
       <ToastContainer />
       <Wrapper>
         <Switch>
+          <Route exact path="/notes" component={Home} />
+          <Route exact path="/contacts" component={Home} />
           <Route exact path="/" component={Home} />
         </Switch>
       </Wrapper>
