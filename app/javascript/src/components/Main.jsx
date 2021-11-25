@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 
 import { initializeLogger } from "common/logger";
 
-import Home from "./Home";
+import Notes from "./Notes";
 import Wrapper from "./Wrapper";
 
 const Main = () => {
@@ -17,9 +17,9 @@ const Main = () => {
       <ToastContainer />
       <Wrapper>
         <Switch>
-          <Route exact path="/notes" component={Home} />
-          <Route exact path="/contacts" component={Home} />
-          <Route exact path="/" component={Home} />
+          <Route exact path="/notes" component={Notes} />
+          <Route exact path="/contacts" component={Notes} />
+          <Route exact path="/" component={Notes} />
         </Switch>
       </Wrapper>
     </BrowserRouter>

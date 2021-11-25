@@ -7,14 +7,13 @@ const SideBar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   return (
     <Sidebar
-      onAppSwitcherToggle={function noRefCheck() {}}
       onCollapse={() => {
         setIsCollapsed(!isCollapsed);
       }}
       isCollapsed={isCollapsed}
       profileInfo={{
         imageUrl: "https://randomuser.me/api/portraits/women/90.jpg",
-        name: "Kieran Miller",
+        name: "Oliver Smith",
       }}
       navLinks={[
         {

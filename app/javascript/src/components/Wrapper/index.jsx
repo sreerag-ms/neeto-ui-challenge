@@ -6,11 +6,9 @@ import SideBar from "../Common/SideBar";
 
 const Wrapper = ({ children }) => {
   return (
-    <div className="w-full h-screen flex flex-row bg-gray">
+    <div className="w-full h-screen flex flex-row">
       <SideBar />
-      <div className="relative flex flex-col flex-grow h-screen overflow-auto">
-        {children}
-      </div>
+      <div className="h-full w-full">{children}</div>
     </div>
   );
 };

@@ -4,7 +4,13 @@ import { Search, Plus } from "@bigbinary/neeto-icons";
 import { Input, Button } from "@bigbinary/neetoui/v2";
 import { Header } from "@bigbinary/neetoui/v2/layouts";
 
-const TitleBar = ({ children, toggleMenu, buttonLabel, onButtonClick }) => {
+const TitleBar = ({
+  children,
+  title,
+  toggleMenu,
+  buttonLabel,
+  onButtonClick,
+}) => {
   return (
     <div>
       <Header
@@ -25,7 +31,7 @@ const TitleBar = ({ children, toggleMenu, buttonLabel, onButtonClick }) => {
             />
           </div>
         }
-        title="Notes"
+        title={title}
       />
     </div>
   );
