@@ -6,7 +6,15 @@ import PropTypes from "prop-types";
 
 import { timeToDateAndMonth, getTimeElapsed } from "helpers/timeFunctions";
 
-const Card = ({ title, description, user, createdAt }) => {
+const Card = ({
+  id,
+  title,
+  description,
+  user,
+  createdAt,
+  setShowDeletePrompt,
+  setSelectedNote,
+}) => {
   const timeElapsed = getTimeElapsed(Number(createdAt));
   const timeCreated = timeToDateAndMonth(Number(createdAt));
 
@@ -16,7 +24,14 @@ const Card = ({ title, description, user, createdAt }) => {
         <Typography style="h4">{title}</Typography>
         <Dropdown icon={MenuVertical} buttonStyle="text">
           <li>Edit</li>
-          <li>Delete</li>
+          <li
+            onClick={() => {
+              setSelectedNote(id);
+              setShowDeletePrompt(true);
+            }}
+          >
+            Delete
+          </li>
         </Dropdown>
       </div>
       <div className="font-normal text-gray-500 text-sm border-b pb-2">
@@ -43,6 +58,9 @@ Card.propTypes = {
   description: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   user: PropTypes.object.isRequired,
+  id: PropTypes.number.isRequired,
+  setShowDeletePrompt: PropTypes.func.isRequired,
+  setSelectedNote: PropTypes.func.isRequired,
 };
 
 export default Card;
