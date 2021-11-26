@@ -7,20 +7,8 @@ export const SIDE_MENU_ITEMS = {
   ],
 };
 
-export const TABLE_DATA = [
-  {
-    user: { name: "Some name", role: "Some role" },
-    createdAt: 1637933588000,
-    email: "mail@some.com",
-  },
-  {
-    user: { name: "Some name", role: "Some role" },
-    createdAt: 1637933588000,
-    email: "mail@some.com",
-  },
-  {
-    user: { name: "Some name", role: "Some role" },
-    createdAt: 1637933588000,
-    email: "mail@some.com",
-  },
-];
+export const TABLE_DATA = Array(21).fill({
+  user: { name: "Some name", role: "Some role" },
+  createdAt: 1637933588000,
+  email: "mail@some.com",
+});

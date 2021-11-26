@@ -27,7 +27,7 @@ const Notes = () => {
     setNotes(newNotes);
     setShowCreatePane(false);
   };
-  const onDelete = () => {
+  const handleDelete = () => {
     if (typeof notes[selectedNote] !== "undefined") {
       const newNotes = [...notes];
       newNotes.splice(selectedNote, 1);
@@ -38,7 +38,7 @@ const Notes = () => {
     }
     setShowDeletePrompt(false);
   };
-  const onCancelDelete = () => {
+  const handleCancelDelete = () => {
     logger.info("onCancelDelete");
     setShowDeletePrompt(false);
   };
@@ -72,8 +72,8 @@ const Notes = () => {
       </div>
       <DeletePrompt
         showPrompt={showDeletePrompt}
-        onDelete={onDelete}
-        onCancel={onCancelDelete}
+        onDelete={handleDelete}
+        onCancel={handleCancelDelete}
         title="Delete Note"
         message="Are you sure you want to delete the note? This action cannot be undone."
       />
