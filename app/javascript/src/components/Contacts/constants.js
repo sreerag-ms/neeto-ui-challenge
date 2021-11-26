@@ -17,3 +17,8 @@ export const TABLE_DATA = Array(21)
     createdAt: 1637933588000,
     email: "mail@some.com",
   }));
+export const ROLE_OPTIONS = [
+  { value: "role-1", label: "Role One" },
+  { value: "role-2", label: "Role Two" },
+  { value: "role-3", label: "Role Three" },
+];

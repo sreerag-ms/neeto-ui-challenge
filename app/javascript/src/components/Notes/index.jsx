@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Toastr } from "@bigbinary/neetoui/v2";
 
@@ -6,12 +6,13 @@ import DeletePrompt from "components/Common/DeletePrompt";
 import SideMenu from "components/Common/SideMenu";
 import TitleBar from "components/Common/TitleBar";
 import CreateNote from "components/Notes/Create";
+import SideMenuStatusContext from "contexts/sideMenuStatus";
 
 import Card from "./Card";
 import { SIDE_MENU_ITEMS, NOTES_DATA } from "./constants";
 
 const Notes = () => {
-  const [showSideMenu, setShowSideMenu] = useState(true);
+  const [showSideMenu, setShowSideMenu] = useContext(SideMenuStatusContext);
   const [showDeletePrompt, setShowDeletePrompt] = useState(false);
   const [showCreatePane, setShowCreatePane] = useState(false);
   const [selectedNote, setSelectedNote] = useState(-1);
@@ -52,7 +53,7 @@ const Notes = () => {
             toggleMenu={toggleSideMenu}
             buttonLabel="Add Notes"
             onButtonClick={handleAddButtonClick}
-            title="Notes"
+            title="All Notes"
           />
           <div className="flex flex-col mb-3">
             {notes.map((note, index) => (

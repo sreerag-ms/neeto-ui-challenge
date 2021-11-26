@@ -6,6 +6,7 @@ import React from "react";
 import { MenuHorizontal } from "@bigbinary/neeto-icons";
 import { Avatar, Dropdown } from "@bigbinary/neetoui/v2";
 import { Table } from "antd";
+import PropTypes from "prop-types";
 
 import { timeToDate } from "helpers/timeFunctions";
 
@@ -91,5 +92,9 @@ const ContactsTable = ({
     </div>
   );
 };
-
+ContactsTable.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  setSelectedContact: PropTypes.func.isRequired,
+  setShowDeletePrompt: PropTypes.func.isRequired,
+};
 export default ContactsTable;
