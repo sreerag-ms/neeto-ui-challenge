@@ -16,20 +16,21 @@ const ContactsTable = ({
 }) => {
   const tableHeaders = [
     {
-      dataIndex: "user",
-      key: "user  ",
-      render: user => (
+      dataIndex: "name",
+      key: "name  ",
+      render: (name, row) => (
         <div className="flex flex-row items-center p-0 m-0">
           <Avatar
             className="mr-4"
             size="large"
             user={{
-              name: user.name,
+              name,
+              imageUrl: row.imageUrl,
             }}
           />
           <div className="flex flex-col">
-            <div className="text-base font-semibold"> {user.name}</div>
-            <div className="text-xs m-0 text-gray-400"> {user.role}</div>
+            <div className="text-base font-semibold"> {name}</div>
+            <div className="text-xs m-0 text-gray-400"> {row.role}</div>
           </div>
         </div>
       ),
@@ -53,7 +54,7 @@ const ContactsTable = ({
     {
       dataIndex: "id",
       title: "",
-      render: (val, row, i) => (
+      render: (val, row, index) => (
         <div className="font-bold">
           <Dropdown
             buttonStyle="text"
@@ -62,7 +63,7 @@ const ContactsTable = ({
           >
             <li
               onClick={() => {
-                setSelectedContact(i);
+                setSelectedContact(index);
                 setShowDeletePrompt(true);
               }}
             >

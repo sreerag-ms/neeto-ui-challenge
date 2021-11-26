@@ -1,14 +1,16 @@
 export const SIDE_MENU_ITEMS = {
   main: [
     { name: "All", count: 10, active: true },
-    { name: "Users", count: 5 },
-    { name: "Leads", count: 5 },
-    { name: "Visitors", count: 5 },
+    { name: "Archived", count: 5 },
+    { name: "Completed", count: 5 },
+    { name: "Phase 2", count: 5 },
   ],
 };
 
 export const TABLE_DATA = Array(21).fill({
-  user: { name: "Some name", role: "Some role" },
+  name: "Some name",
+  role: "Some role",
+  imageUrl: "https://i.pravatar.cc/300",
   createdAt: 1637933588000,
   email: "mail@some.com",
 });
