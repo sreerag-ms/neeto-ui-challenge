@@ -4,17 +4,18 @@ import { Check } from "@bigbinary/neeto-icons";
 import { Pane, Typography, Button } from "@bigbinary/neetoui/v2";
 import { Input, Textarea, Select } from "@bigbinary/neetoui/v2/formik";
 import { Formik, Form } from "formik";
+import PropTypes from "prop-types";
 
 import formInitialValue from "constants/formInitialValues";
 import formValidationSchema from "constants/formValidationSchemas";
 
 import { CONTACT_OPTIONS, TAG_OPTIONS } from "../constants";
 
-function CreateNote({ showPane, setShowCreatePane, createNote }) {
+function CreateNote({ showPane, setShowPane, createNote }) {
   const onSubmit = values => {
     const note = {
-      title: values.title,
-      description: values.description,
+      title: values.title.trim(),
+      description: values.description.trim(),
       createdAt: Date.now().toString(),
       user: { imageUrl: "https://i.pravatar.cc/300" },
     };
@@ -22,7 +23,7 @@ function CreateNote({ showPane, setShowCreatePane, createNote }) {
   };
 
   return (
-    <Pane onClose={() => setShowCreatePane(false)} isOpen={showPane}>
+    <Pane onClose={() => setShowPane(false)} isOpen={showPane}>
       <Formik
         initialValues={formInitialValue.createNoteForm}
         onSubmit={onSubmit}
@@ -43,25 +44,27 @@ function CreateNote({ showPane, setShowCreatePane, createNote }) {
                   name="title"
                   type="text"
                   label="Title"
-                  placeholder="New Title"
+                  placeholder="Enter a title"
                   className="my-4"
                 />
                 <Textarea
                   name="description"
                   label="Description"
-                  placeholder="Whats happening"
+                  placeholder="Enter note description"
                   rows={1}
                   className="my-4"
                 />
                 <Select
                   label="Assigned Contact"
                   name="contact"
+                  placeholder="Select Role"
                   options={CONTACT_OPTIONS}
                   className="my-4"
                 />
                 <Select
                   label="Tags"
                   name="tags"
+                  placeholder="Select Tags"
                   options={TAG_OPTIONS}
                   className="my-4"
                   isMulti
@@ -72,7 +75,7 @@ function CreateNote({ showPane, setShowCreatePane, createNote }) {
               <Button
                 icon={Check}
                 type="submit"
-                label="Save"
+                label="Save Changes"
                 size="large"
                 style="primary"
                 className="ml-2"
@@ -81,7 +84,7 @@ function CreateNote({ showPane, setShowCreatePane, createNote }) {
               <Button
                 style="text"
                 label="Cancel"
-                onClick={() => setShowCreatePane(false)}
+                onClick={() => setShowPane(false)}
                 size="large"
               />
             </Pane.Footer>
@@ -92,4 +95,9 @@ function CreateNote({ showPane, setShowCreatePane, createNote }) {
   );
 }
 
+CreateNote.propTypes = {
+  showPane: PropTypes.bool.isRequired,
+  setShowPane: PropTypes.func.isRequired,
+  createNote: PropTypes.func.isRequired,
+};
 export default CreateNote;

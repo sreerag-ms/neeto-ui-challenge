@@ -79,7 +79,7 @@ const Notes = () => {
       />
       <CreateNote
         showPane={showCreatePane}
-        setShowCreatePane={setShowCreatePane}
+        setShowPane={setShowCreatePane}
         createNote={createNote}
       />
     </div>
