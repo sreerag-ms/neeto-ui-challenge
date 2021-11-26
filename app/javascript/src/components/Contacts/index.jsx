@@ -25,12 +25,11 @@ const Contacts = () => {
     setShowCreatePane(true);
   };
   const handleCreateContact = values => {
-    logger.log("CreateCOntace", values);
     const newContact = {
       key: contacts.length + 1,
-      email: values.email,
-      role: values.role.value,
-      name: `${values.firstName} ${values.lastName}`,
+      email: values.email.trim(),
+      role: values.role.value.trim(),
+      name: `${values.firstName.trim()} ${values.lastName.trim()}`,
       createdAt: Date.now(),
     };
     setContacts([newContact, ...contacts]);
@@ -39,11 +38,15 @@ const Contacts = () => {
   };
 
   const handleDelete = () => {
-    const newContacts = [...contacts];
-    newContacts.splice(selectedContact, 1);
-    setContacts(newContacts);
-    setShowDeletePrompt(false);
-    Toastr.success("Contact deleted successfully");
+    if (typeof contacts[selectedContact] !== "undefined") {
+      const newContacts = [...contacts];
+      newContacts.splice(selectedContact, 1);
+      setContacts(newContacts);
+      setShowDeletePrompt(false);
+      Toastr.success("Contact deleted successfully");
+    } else {
+      Toastr.error("Something went wrong!");
+    }
   };
   const handleCancelDelete = () => {
     setSelectedContact(-1);
@@ -51,14 +54,18 @@ const Contacts = () => {
   };
   return (
     <div className="w-full h-screen flex flex-row ">
-      <SideMenu title="Notes" items={SIDE_MENU_ITEMS} showMenu={showSideMenu} />
+      <SideMenu
+        title="Contacts"
+        items={SIDE_MENU_ITEMS}
+        showMenu={showSideMenu}
+      />
       <div className="flex flex-col w-full px-5 items-center overflow-auto">
         <div className="flex flex-col w-full">
           <TitleBar
             toggleMenu={toggleSideMenu}
             buttonLabel="Add Contacts"
             onButtonClick={handleAddButtonClick}
-            title="Contacts"
+            title="All Contacts"
           />
           <ContactsTable
             contacts={contacts}

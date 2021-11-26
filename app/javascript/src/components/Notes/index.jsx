@@ -53,7 +53,7 @@ const Notes = () => {
             toggleMenu={toggleSideMenu}
             buttonLabel="Add Notes"
             onButtonClick={handleAddButtonClick}
-            title="Notes"
+            title="All Notes"
           />
           <div className="flex flex-col mb-3">
             {notes.map((note, index) => (
