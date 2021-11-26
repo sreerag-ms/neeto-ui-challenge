@@ -46,3 +46,19 @@ export const NOTES_DATA = [
     user: { imageUrl: "https://i.pravatar.cc/300" },
   },
 ];
+
+export const CONTACT_OPTIONS = [
+  { value: "contact1", label: "Contact One" },
+  { value: "contact2", label: "Contact Two" },
+  { value: "contact3", label: "Contact Three" },
+  { value: "contact4", label: "Contact Four" },
+  { value: "contact5", label: "Contact Five" },
+];
+
+export const TAG_OPTIONS = [
+  { value: "tag1", label: "Tag One" },
+  { value: "tag2", label: "Tag Two" },
+  { value: "tag3", label: "Tag Three" },
+  { value: "tag4", label: "Tag Four" },
+  { value: "tag5", label: "Tag Five" },
+];

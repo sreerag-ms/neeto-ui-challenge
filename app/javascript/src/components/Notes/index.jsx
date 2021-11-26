@@ -5,6 +5,7 @@ import { Toastr } from "@bigbinary/neetoui/v2";
 import DeletePrompt from "components/Common/DeletePrompt";
 import SideMenu from "components/Common/SideMenu";
 import TitleBar from "components/Common/TitleBar";
+import CreateNote from "components/Notes/Create";
 
 import Card from "./Card";
 import { SIDE_MENU_ITEMS, NOTES_DATA } from "./constants";
@@ -12,13 +13,20 @@ import { SIDE_MENU_ITEMS, NOTES_DATA } from "./constants";
 const Notes = () => {
   const [showSideMenu, setShowSideMenu] = useState(true);
   const [showDeletePrompt, setShowDeletePrompt] = useState(false);
+  const [showCreatePane, setShowCreatePane] = useState(false);
   const [selectedNote, setSelectedNote] = useState(-1);
   const [notes, setNotes] = useState(NOTES_DATA);
+
   const toggleSideMenu = () => setShowSideMenu(!showSideMenu);
   const handleAddButtonClick = () => {
-    logger.info("handleAddButtonClick");
+    setShowCreatePane(true);
   };
 
+  const createNote = newNote => {
+    const newNotes = [...notes, newNote];
+    setNotes(newNotes);
+    setShowCreatePane(false);
+  };
   const onDelete = () => {
     if (typeof notes[selectedNote] !== "undefined") {
       const newNotes = [...notes];
@@ -68,6 +76,11 @@ const Notes = () => {
         onCancel={onCancelDelete}
         title="Delete Note"
         message="Are you sure you want to delete the note? This action cannot be undone."
+      />
+      <CreateNote
+        showPane={showCreatePane}
+        setShowCreatePane={setShowCreatePane}
+        createNote={createNote}
       />
     </div>
   );
