@@ -5,4 +5,10 @@ export default {
     contact: null,
     tags: [],
   },
+  createContactForm: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    role: null,
+  },
 };

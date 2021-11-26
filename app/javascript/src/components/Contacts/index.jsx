@@ -8,6 +8,7 @@ import TitleBar from "components/Common/TitleBar";
 
 import { TABLE_DATA } from "./constants";
 import { SIDE_MENU_ITEMS } from "./constants";
+import CreateContact from "./Create";
 import ContactsTable from "./Table";
 
 const Contacts = () => {
@@ -15,10 +16,25 @@ const Contacts = () => {
   const [contacts, setContacts] = useState(TABLE_DATA);
   const [selectedContact, setSelectedContact] = useState(-1);
   const [showDeletePrompt, setShowDeletePrompt] = useState(false);
+  const [showCreatePane, setShowCreatePane] = useState(false);
   const toggleSideMenu = () => setShowSideMenu(!showSideMenu);
 
   const handleAddButtonClick = () => {
     logger.log("handleAddButtonClick");
+    setShowCreatePane(true);
+  };
+  const handleCreateContact = values => {
+    logger.log("CreateCOntace", values);
+    const newContact = {
+      key: contacts.length + 1,
+      email: values.email,
+      role: values.role.value,
+      name: `${values.firstName} ${values.lastName}`,
+      createdAt: Date.now(),
+    };
+    setContacts([newContact, ...contacts]);
+    setShowCreatePane(false);
+    Toastr.success("Contact created successfully");
   };
 
   const handleDelete = () => {
@@ -27,7 +43,6 @@ const Contacts = () => {
     setContacts(newContacts);
     setShowDeletePrompt(false);
     Toastr.success("Contact deleted successfully");
-    logger.log("handleAddButtonClick");
   };
   const handleCancelDelete = () => {
     setSelectedContact(-1);
@@ -57,6 +72,11 @@ const Contacts = () => {
         onCancel={handleCancelDelete}
         title="Delete Contact"
         message="Are you sure you want to delete this contact? This action cannot be undone."
+      />
+      <CreateContact
+        onSubmit={handleCreateContact}
+        showPane={showCreatePane}
+        setShowPane={setShowCreatePane}
       />
     </div>
   );
