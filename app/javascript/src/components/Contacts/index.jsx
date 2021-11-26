@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Toastr } from "@bigbinary/neetoui/v2";
 
 import DeletePrompt from "components/Common/DeletePrompt";
 import SideMenu from "components/Common/SideMenu";
 import TitleBar from "components/Common/TitleBar";
+import SideMenuStatusContext from "contexts/sideMenuStatus";
 
 import { TABLE_DATA } from "./constants";
 import { SIDE_MENU_ITEMS } from "./constants";
@@ -12,7 +13,7 @@ import CreateContact from "./Create";
 import ContactsTable from "./Table";
 
 const Contacts = () => {
-  const [showSideMenu, setShowSideMenu] = useState(true);
+  const [showSideMenu, setShowSideMenu] = useContext(SideMenuStatusContext);
   const [contacts, setContacts] = useState(TABLE_DATA);
   const [selectedContact, setSelectedContact] = useState(-1);
   const [showDeletePrompt, setShowDeletePrompt] = useState(false);
