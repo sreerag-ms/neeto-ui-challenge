@@ -22,7 +22,10 @@ export const PROFILE_INFO = {
   name: "Oliver Smith",
   dropdownProps: [
     {
-      label: "Edit",
+      label: "My profile",
+    },
+    {
+      label: "Log out",
     },
   ],
 };
