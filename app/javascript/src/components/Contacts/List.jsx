@@ -78,7 +78,7 @@ const ListContacts = ({
   ];
 
   return (
-    <div className="flex h-full w-full mt-4 mb-10 ">
+    <div className="flex h-full w-full mt-4 mb-10">
       <Table
         columns={tableHeaders}
         rowSelection={{ type: "checkbox" }}

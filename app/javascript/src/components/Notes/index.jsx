@@ -62,7 +62,7 @@ const Notes = ({ isSideMenuOpen, setIsSideMenuOpen }) => {
         showMenu={isSideMenuOpen}
       />
       <div className="flex flex-col w-full px-5 items-center overflow-auto">
-        <div className="flex flex-col w-full max-w-7xl ">
+        <div className="flex flex-col w-full max-w-7xl">
           <TitleBar
             toggleMenu={toggleSideMenu}
             buttonLabel="Add Notes"

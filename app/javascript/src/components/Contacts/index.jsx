@@ -62,7 +62,7 @@ const Contacts = ({ isSideMenuOpen, setIsSideMenuOpen }) => {
   }
 
   return (
-    <div className="w-full h-screen flex flex-row ">
+    <div className="w-full h-screen flex flex-row">
       <SideMenu
         title="Contacts"
         items={SIDE_MENU_ITEMS}
