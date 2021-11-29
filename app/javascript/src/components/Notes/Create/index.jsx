@@ -4,7 +4,6 @@ import { Formik, Form } from "formik";
 import { Check } from "neetoIcons";
 import { Pane, Typography, Button } from "neetoui/v2";
 import { Input, Textarea, Select } from "neetoui/v2/formik";
-import PropTypes from "prop-types";
 
 import {
   CONTACT_OPTIONS,
@@ -40,35 +39,31 @@ const CreateNote = ({ isCreatePaneOpen, setIsCreatePaneOpen, createNote }) => {
                 Add New Note
               </Typography>
             </Pane.Header>
-            <Pane.Body className="w-full">
-              <div className="w-full flex flex-col ">
+            <Pane.Body>
+              <div className="w-full space-y-8">
                 <Input
                   name="title"
                   type="text"
                   label="Title"
                   placeholder="Enter a title"
-                  className="my-4"
                 />
                 <Textarea
                   name="description"
                   label="Description"
                   placeholder="Enter note description"
                   rows={1}
-                  className="my-4"
                 />
                 <Select
                   label="Assigned Contact"
                   name="contact"
                   placeholder="Select Role"
                   options={CONTACT_OPTIONS}
-                  className="my-4"
                 />
                 <Select
                   label="Tags"
                   name="tags"
                   placeholder="Select Tags"
                   options={TAG_OPTIONS}
-                  className="my-4"
                   isMulti
                 />
               </div>
@@ -80,7 +75,6 @@ const CreateNote = ({ isCreatePaneOpen, setIsCreatePaneOpen, createNote }) => {
                 label="Save Changes"
                 size="large"
                 style="primary"
-                className="ml-2"
                 loading={isSubmitting}
               />
               <Button
@@ -97,9 +91,4 @@ const CreateNote = ({ isCreatePaneOpen, setIsCreatePaneOpen, createNote }) => {
   );
 };
 
-CreateNote.propTypes = {
-  isCreatePaneOpen: PropTypes.bool.isRequired,
-  setIsCreatePaneOpen: PropTypes.func.isRequired,
-  createNote: PropTypes.func.isRequired,
-};
 export default CreateNote;
