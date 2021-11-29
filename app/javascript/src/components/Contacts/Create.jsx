@@ -29,21 +29,19 @@ const CreateContact = ({ showPane, setShowPane, onSubmit }) => {
             </Pane.Header>
 
             <Pane.Body>
-              <div className="w-full flex flex-col ">
-                <div className="flex flex-row w-full">
+              <div className="w-full flex flex-col space-y-8">
+                <div className="flex flex-row w-full space-x-4">
                   <Input
                     name="firstName"
                     type="text"
                     label="First Name"
                     placeholder="Enter first name"
-                    className="my-4 pr-2"
                   />
                   <Input
                     name="lastName"
                     type="text"
                     label="Last Name"
                     placeholder="Enter last name"
-                    className="my-4"
                   />
                 </div>
                 <Input
@@ -51,14 +49,12 @@ const CreateContact = ({ showPane, setShowPane, onSubmit }) => {
                   type="text"
                   label="Email Address"
                   placeholder="Enter your email address"
-                  className="my-4"
                 />
                 <Select
                   label="Role"
                   name="role"
                   placeholder="Select a role"
                   options={ROLE_OPTIONS}
-                  className="my-4"
                 />
               </div>
             </Pane.Body>
@@ -70,7 +66,6 @@ const CreateContact = ({ showPane, setShowPane, onSubmit }) => {
                 label="Save Changes"
                 size="large"
                 style="primary"
-                className="ml-2"
                 loading={isSubmitting}
               />
               <Button
