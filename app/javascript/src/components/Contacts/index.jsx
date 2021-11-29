@@ -11,16 +11,17 @@ import CreateContact from "./Create";
 import ListContacts from "./List";
 
 const Contacts = () => {
-  const [showSideMenu, setShowSideMenu] = useContext(SideMenuStatusContext);
+  const [isSideMenuOpen, setIsSideMenuOpen] = useContext(SideMenuStatusContext);
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(-1);
-  const [showDeletePrompt, setShowDeletePrompt] = useState(false);
-  const [showCreatePane, setShowCreatePane] = useState(false);
-  const toggleSideMenu = () => setShowSideMenu(!showSideMenu);
+  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
+  const [isCreatePaneOpen, setIsCreatePaneOpen] = useState(false);
+  const toggleSideMenu = () =>
+    setIsSideMenuOpen(isSideMenuOpen => !isSideMenuOpen);
 
   const handleAddButtonClick = () => {
     logger.log("handleAddButtonClick");
-    setShowCreatePane(true);
+    setIsCreatePaneOpen(true);
   };
   const handleCreateContact = values => {
     const newContact = {
@@ -31,7 +32,7 @@ const Contacts = () => {
       createdAt: Date.now(),
     };
     setContacts([newContact, ...contacts]);
-    setShowCreatePane(false);
+    setIsCreatePaneOpen(false);
     Toastr.success("Contact created successfully");
   };
 
@@ -40,7 +41,7 @@ const Contacts = () => {
       const newContacts = [...contacts];
       newContacts.splice(selectedContact, 1);
       setContacts(newContacts);
-      setShowDeletePrompt(false);
+      setIsDeleteAlertOpen(false);
       Toastr.success("Contact deleted successfully");
     } else {
       Toastr.error("Something went wrong!");
@@ -48,7 +49,7 @@ const Contacts = () => {
   };
   const handleCancelDelete = () => {
     setSelectedContact(-1);
-    setShowDeletePrompt(false);
+    setIsDeleteAlertOpen(false);
   };
 
   useEffect(() => {
@@ -67,7 +68,7 @@ const Contacts = () => {
       <SideMenu
         title="Contacts"
         items={SIDE_MENU_ITEMS}
-        showMenu={showSideMenu}
+        showMenu={isSideMenuOpen}
       />
       <div className="flex flex-col w-full px-5 items-center overflow-auto">
         <div className="flex flex-col w-full">
@@ -80,12 +81,12 @@ const Contacts = () => {
           <ListContacts
             contacts={contacts}
             setSelectedContact={setSelectedContact}
-            setShowDeletePrompt={setShowDeletePrompt}
+            setIsDeleteAlertOpen={setIsDeleteAlertOpen}
           />
         </div>
       </div>
       <Alert
-        isOpen={showDeletePrompt}
+        isOpen={isDeleteAlertOpen}
         onSubmit={handleDelete}
         onClose={handleCancelDelete}
         title="Delete Contact"
@@ -93,8 +94,8 @@ const Contacts = () => {
       />
       <CreateContact
         onSubmit={handleCreateContact}
-        showPane={showCreatePane}
-        setShowPane={setShowCreatePane}
+        isCreatePaneOpen={isCreatePaneOpen}
+        setIsCreatePaneOpen={setIsCreatePaneOpen}
       />
     </div>
   );

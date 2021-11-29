@@ -11,9 +11,9 @@ import {
   CONTACT_FORM_VALIDATION_SCHEMA,
 } from "./constants";
 
-const CreateContact = ({ showPane, setShowPane, onSubmit }) => {
+const CreateContact = ({ isCreatePaneOpen, setIsCreatePaneOpen, onSubmit }) => {
   return (
-    <Pane onClose={() => setShowPane(false)} isOpen={showPane}>
+    <Pane onClose={() => setIsCreatePaneOpen(false)} isOpen={isCreatePaneOpen}>
       <Formik
         initialValues={CONTACT_FORM_INITIAL_VALUES}
         onSubmit={onSubmit}
@@ -72,7 +72,7 @@ const CreateContact = ({ showPane, setShowPane, onSubmit }) => {
               <Button
                 style="text"
                 label="Cancel"
-                onClick={() => setShowPane(false)}
+                onClick={() => setIsCreatePaneOpen(false)}
                 size="large"
               />
             </Pane.Footer>

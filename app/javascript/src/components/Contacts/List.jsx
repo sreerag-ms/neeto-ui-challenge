@@ -12,7 +12,7 @@ import { timeToDate } from "helpers/timeFunctions";
 const ListContacts = ({
   contacts,
   setSelectedContact,
-  setShowDeletePrompt,
+  setIsDeleteAlertOpen,
 }) => {
   const tableHeaders = [
     {
@@ -64,7 +64,7 @@ const ListContacts = ({
             <li
               onClick={() => {
                 setSelectedContact(index);
-                setShowDeletePrompt(true);
+                setIsDeleteAlertOpen(true);
               }}
             >
               Delete{" "}
