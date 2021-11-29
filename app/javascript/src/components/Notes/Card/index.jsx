@@ -12,7 +12,7 @@ const Card = ({
   description,
   user,
   createdAt,
-  setShowDeletePrompt,
+  setIsDeleteAlertOpen,
   setSelectedNote,
 }) => {
   return (
@@ -20,7 +20,7 @@ const Card = ({
       <Header
         id={id}
         title={title}
-        setShowDeletePrompt={setShowDeletePrompt}
+        setIsDeleteAlertOpen={setIsDeleteAlertOpen}
         setSelectedNote={setSelectedNote}
       />
       <Body description={description} />
@@ -35,7 +35,7 @@ Card.propTypes = {
   createdAt: PropTypes.string.isRequired,
   user: PropTypes.object.isRequired,
   id: PropTypes.number.isRequired,
-  setShowDeletePrompt: PropTypes.func.isRequired,
+  setIsDeleteAlertOpen: PropTypes.func.isRequired,
   setSelectedNote: PropTypes.func.isRequired,
 };
 
