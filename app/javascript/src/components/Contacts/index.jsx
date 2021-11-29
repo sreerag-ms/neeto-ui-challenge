@@ -1,15 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import { Toastr, PageLoader, Alert } from "@bigbinary/neetoui/v2";
+import { Toastr, PageLoader, Alert } from "neetoui/v2";
 
-import SideMenu from "components/Common/SideMenu";
-import TitleBar from "components/Common/TitleBar";
+import SideMenu from "commonComponents/SideMenu";
+import TitleBar from "commonComponents/TitleBar";
 import SideMenuStatusContext from "contexts/sideMenuStatus";
 
-import { TABLE_DATA } from "./constants";
-import { SIDE_MENU_ITEMS } from "./constants";
+import { SIDE_MENU_ITEMS, TABLE_DATA } from "./constants";
 import CreateContact from "./Create";
-import ContactsTable from "./Table";
+import ListContacts from "./List";
 
 const Contacts = () => {
   const [showSideMenu, setShowSideMenu] = useContext(SideMenuStatusContext);
@@ -78,7 +77,7 @@ const Contacts = () => {
             onButtonClick={handleAddButtonClick}
             title="All Contacts"
           />
-          <ContactsTable
+          <ListContacts
             contacts={contacts}
             setSelectedContact={setSelectedContact}
             setShowDeletePrompt={setShowDeletePrompt}

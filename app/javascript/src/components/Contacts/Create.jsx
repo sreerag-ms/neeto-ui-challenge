@@ -1,15 +1,14 @@
 import React from "react";
 
-import { Check } from "@bigbinary/neeto-icons";
-import { Pane, Typography, Button } from "@bigbinary/neetoui/v2";
-import { Input, Select } from "@bigbinary/neetoui/v2/formik";
 import { Formik, Form } from "formik";
-import PropTypes from "prop-types";
+import { Check } from "neetoIcons";
+import { Pane, Typography, Button } from "neetoui/v2";
+import { Input, Select } from "neetoui/v2/formik";
 
 import formInitialValue from "constants/formInitialValues";
 import formValidationSchema from "constants/formValidationSchemas";
 
-import { ROLE_OPTIONS } from "../constants";
+import { ROLE_OPTIONS } from "./constants";
 
 const CreateContact = ({ showPane, setShowPane, onSubmit }) => {
   return (
@@ -87,9 +86,5 @@ const CreateContact = ({ showPane, setShowPane, onSubmit }) => {
     </Pane>
   );
 };
-CreateContact.propTypes = {
-  showPane: PropTypes.bool.isRequired,
-  setShowPane: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-};
+
 export default CreateContact;
