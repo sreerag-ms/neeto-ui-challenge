@@ -10,7 +10,7 @@ import {
   TAG_OPTIONS,
   NOTE_FORM_VALIDATION_SCHEMA,
   NOTE_FORM_INITIAL_VALUES,
-} from "../constants";
+} from "./constants";
 
 const CreateNote = ({ isCreatePaneOpen, setIsCreatePaneOpen, createNote }) => {
   const onSubmit = values => {
