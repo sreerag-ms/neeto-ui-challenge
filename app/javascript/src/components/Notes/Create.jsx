@@ -1,17 +1,18 @@
 import React from "react";
 
-import { Check } from "@bigbinary/neeto-icons";
-import { Pane, Typography, Button } from "@bigbinary/neetoui/v2";
-import { Input, Textarea, Select } from "@bigbinary/neetoui/v2/formik";
 import { Formik, Form } from "formik";
-import PropTypes from "prop-types";
+import { Check } from "neetoIcons";
+import { Pane, Typography, Button } from "neetoui/v2";
+import { Input, Textarea, Select } from "neetoui/v2/formik";
 
-import formInitialValue from "constants/formInitialValues";
-import formValidationSchema from "constants/formValidationSchemas";
+import {
+  CONTACT_OPTIONS,
+  TAG_OPTIONS,
+  NOTE_FORM_VALIDATION_SCHEMA,
+  NOTE_FORM_INITIAL_VALUES,
+} from "./constants";
 
-import { CONTACT_OPTIONS, TAG_OPTIONS } from "../constants";
-
-function CreateNote({ showPane, setShowPane, createNote }) {
+const CreateNote = ({ isCreatePaneOpen, setIsCreatePaneOpen, createNote }) => {
   const onSubmit = values => {
     const note = {
       title: values.title.trim(),
@@ -23,13 +24,13 @@ function CreateNote({ showPane, setShowPane, createNote }) {
   };
 
   return (
-    <Pane onClose={() => setShowPane(false)} isOpen={showPane}>
+    <Pane onClose={() => setIsCreatePaneOpen(false)} isOpen={isCreatePaneOpen}>
       <Formik
-        initialValues={formInitialValue.createNoteForm}
+        initialValues={NOTE_FORM_INITIAL_VALUES}
         onSubmit={onSubmit}
         validateOnChange={false}
         validateOnBlur={false}
-        validationSchema={formValidationSchema.createNoteForm}
+        validationSchema={NOTE_FORM_VALIDATION_SCHEMA}
       >
         {({ isSubmitting }) => (
           <Form>
@@ -38,35 +39,31 @@ function CreateNote({ showPane, setShowPane, createNote }) {
                 Add New Note
               </Typography>
             </Pane.Header>
-            <Pane.Body className="w-full">
-              <div className="w-full flex flex-col ">
+            <Pane.Body>
+              <div className="w-full space-y-8">
                 <Input
                   name="title"
                   type="text"
                   label="Title"
                   placeholder="Enter a title"
-                  className="my-4"
                 />
                 <Textarea
                   name="description"
                   label="Description"
                   placeholder="Enter note description"
                   rows={1}
-                  className="my-4"
                 />
                 <Select
                   label="Assigned Contact"
                   name="contact"
                   placeholder="Select Role"
                   options={CONTACT_OPTIONS}
-                  className="my-4"
                 />
                 <Select
                   label="Tags"
                   name="tags"
                   placeholder="Select Tags"
                   options={TAG_OPTIONS}
-                  className="my-4"
                   isMulti
                 />
               </div>
@@ -78,13 +75,12 @@ function CreateNote({ showPane, setShowPane, createNote }) {
                 label="Save Changes"
                 size="large"
                 style="primary"
-                className="ml-2"
                 loading={isSubmitting}
               />
               <Button
                 style="text"
                 label="Cancel"
-                onClick={() => setShowPane(false)}
+                onClick={() => setIsCreatePaneOpen(false)}
                 size="large"
               />
             </Pane.Footer>
@@ -93,11 +89,6 @@ function CreateNote({ showPane, setShowPane, createNote }) {
       </Formik>
     </Pane>
   );
-}
-
-CreateNote.propTypes = {
-  showPane: PropTypes.bool.isRequired,
-  setShowPane: PropTypes.func.isRequired,
-  createNote: PropTypes.func.isRequired,
 };
+
 export default CreateNote;

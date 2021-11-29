@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import { Toastr, PageLoader } from "@bigbinary/neetoui/v2";
+import { Toastr, PageLoader, Alert } from "@bigbinary/neetoui/v2";
 
-import DeletePrompt from "components/Common/DeletePrompt";
 import SideMenu from "components/Common/SideMenu";
 import TitleBar from "components/Common/TitleBar";
 import SideMenuStatusContext from "contexts/sideMenuStatus";
@@ -86,10 +85,10 @@ const Contacts = () => {
           />
         </div>
       </div>
-      <DeletePrompt
-        showPrompt={showDeletePrompt}
-        onDelete={handleDelete}
-        onCancel={handleCancelDelete}
+      <Alert
+        isOpen={showDeletePrompt}
+        onSubmit={handleDelete}
+        onClose={handleCancelDelete}
         title="Delete Contact"
         message="Are you sure you want to delete this contact? This action cannot be undone."
       />

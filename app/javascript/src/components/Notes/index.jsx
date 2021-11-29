@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import { Toastr, PageLoader } from "neetoui/v2";
+import { Toastr, PageLoader, Alert } from "neetoui/v2";
 
-import DeletePrompt from "commonComponents/DeletePrompt";
 import SideMenu from "commonComponents/SideMenu";
 import TitleBar from "commonComponents/TitleBar";
 import CreateNote from "components/Notes/Create";
@@ -13,21 +12,21 @@ import { SIDE_MENU_ITEMS, NOTES_DATA } from "./constants";
 
 const Notes = () => {
   const [isSideMenuOpen, setIsSideMenuOpen] = useContext(SideMenuStatusContext);
-  const [showDeletePrompt, setShowDeletePrompt] = useState(false);
-  const [showCreatePane, setShowCreatePane] = useState(false);
+  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
+  const [isCreatePaneOpen, setIsCreatePaneOpen] = useState(false);
   const [selectedNote, setSelectedNote] = useState(-1);
   const [notes, setNotes] = useState([]);
 
   const toggleSideMenu = () =>
     setIsSideMenuOpen(isSideMenuOpen => !isSideMenuOpen);
   const handleAddButtonClick = () => {
-    setShowCreatePane(true);
+    setIsCreatePaneOpen(true);
   };
 
   const createNote = newNote => {
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
-    setShowCreatePane(false);
+    setIsCreatePaneOpen(false);
     Toastr.success("Note created successfully");
   };
   const handleDelete = () => {
@@ -39,11 +38,11 @@ const Notes = () => {
     } else {
       Toastr.error("Something went wrong!");
     }
-    setShowDeletePrompt(false);
+    setIsDeleteAlertOpen(false);
   };
   const handleCancelDelete = () => {
     logger.info("onCancelDelete");
-    setShowDeletePrompt(false);
+    setIsDeleteAlertOpen(false);
   };
 
   useEffect(() => {
@@ -76,7 +75,7 @@ const Notes = () => {
             {notes.map((note, index) => (
               <Card
                 id={index}
-                setShowDeletePrompt={setShowDeletePrompt}
+                setIsDeleteAlertOpen={setIsDeleteAlertOpen}
                 setSelectedNote={setSelectedNote}
                 title={note.title}
                 description={note.description}
@@ -88,16 +87,16 @@ const Notes = () => {
           </div>
         </div>
       </div>
-      <DeletePrompt
-        showPrompt={showDeletePrompt}
-        onDelete={handleDelete}
-        onCancel={handleCancelDelete}
+      <Alert
+        isOpen={isDeleteAlertOpen}
+        onSubmit={handleDelete}
+        onClose={handleCancelDelete}
         title="Delete Note"
         message="Are you sure you want to delete the note? This action cannot be undone."
       />
       <CreateNote
-        showPane={showCreatePane}
-        setShowPane={setShowCreatePane}
+        isCreatePaneOpen={isCreatePaneOpen}
+        setIsCreatePaneOpen={setIsCreatePaneOpen}
         createNote={createNote}
       />
     </div>
