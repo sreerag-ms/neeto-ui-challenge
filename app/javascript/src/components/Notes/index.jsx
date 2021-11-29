@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
-import { Toastr } from "@bigbinary/neetoui/v2";
+import { Toastr, PageLoader } from "@bigbinary/neetoui/v2";
 
 import DeletePrompt from "components/Common/DeletePrompt";
 import SideMenu from "components/Common/SideMenu";
@@ -16,7 +16,7 @@ const Notes = () => {
   const [showDeletePrompt, setShowDeletePrompt] = useState(false);
   const [showCreatePane, setShowCreatePane] = useState(false);
   const [selectedNote, setSelectedNote] = useState(-1);
-  const [notes, setNotes] = useState(NOTES_DATA);
+  const [notes, setNotes] = useState([]);
 
   const toggleSideMenu = () => setShowSideMenu(!showSideMenu);
   const handleAddButtonClick = () => {
@@ -44,6 +44,17 @@ const Notes = () => {
     logger.info("onCancelDelete");
     setShowDeletePrompt(false);
   };
+
+  useEffect(() => {
+    // To demonstrate the loading animation
+    setTimeout(() => {
+      setNotes(NOTES_DATA);
+    }, 500);
+  }, []);
+  // Does not handle empty array
+  if (!notes || notes.length === 0) {
+    return <PageLoader />;
+  }
 
   return (
     <div className="w-full h-screen flex flex-row">
