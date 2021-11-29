@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import { Toastr, PageLoader } from "neetoui/v2";
+import { Toastr, PageLoader, Alert } from "neetoui/v2";
 
-import DeletePrompt from "commonComponents/DeletePrompt";
 import SideMenu from "commonComponents/SideMenu";
 import TitleBar from "commonComponents/TitleBar";
 import CreateNote from "components/Notes/Create";
@@ -88,10 +87,10 @@ const Notes = () => {
           </div>
         </div>
       </div>
-      <DeletePrompt
-        showPrompt={isDeleteAlertOpen}
-        onDelete={handleDelete}
-        onCancel={handleCancelDelete}
+      <Alert
+        isOpen={isDeleteAlertOpen}
+        onSubmit={handleDelete}
+        onClose={handleCancelDelete}
         title="Delete Note"
         message="Are you sure you want to delete the note? This action cannot be undone."
       />
