@@ -2,13 +2,21 @@ import * as Yup from "yup";
 
 export const SIDE_MENU_ITEMS = {
   main: [
-    { name: "All", count: 10, active: true },
+    { name: "All", count: 30, active: true },
     { name: "Users", count: 5 },
     { name: "Leads", count: 5 },
     { name: "Visitors", count: 5 },
   ],
-  segments: [{ name: "Sub1" }, { name: "Sub2" }],
-  tags: [{ name: "Sub1" }, { name: "Sub2" }],
+  segments: [
+    { name: "Europe", count: 10 },
+    { name: "Middle East", count: 10 },
+    { name: "Asia", count: 10 },
+  ],
+  tags: [
+    { name: "Sales", count: 10 },
+    { name: "Finance", count: 10 },
+    { name: "User Experience", count: 10 },
+  ],
 };
 
 export const NOTES_DATA = [
@@ -50,19 +58,16 @@ export const NOTES_DATA = [
 ];
 
 export const CONTACT_OPTIONS = [
-  { value: "contact1", label: "Contact One" },
-  { value: "contact2", label: "Contact Two" },
-  { value: "contact3", label: "Contact Three" },
-  { value: "contact4", label: "Contact Four" },
-  { value: "contact5", label: "Contact Five" },
+  { value: "contact1", label: "Oliver" },
+  { value: "contact2", label: "Sam" },
+  { value: "contact3", label: "Eva" },
 ];
 
 export const TAG_OPTIONS = [
-  { value: "tag1", label: "Tag One" },
-  { value: "tag2", label: "Tag Two" },
-  { value: "tag3", label: "Tag Three" },
-  { value: "tag4", label: "Tag Four" },
-  { value: "tag5", label: "Tag Five" },
+  { value: "reminder", label: "Reminder" },
+  { value: "shopping", label: "Shopping" },
+  { value: "news", label: "News" },
+  { value: "important", label: "Important" },
 ];
 
 export const NOTE_FORM_INITIAL_VALUES = {
