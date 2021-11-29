@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
-import { Text, NeetoInsights, UserCircle } from "@bigbinary/neeto-icons";
 import { Sidebar } from "@bigbinary/neetoui/v2/layouts";
+
+import { NAV_LINKS, PROFILE_INFO } from "./constants";
+import Logo from "./Logo";
 
 const SideBar = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -11,32 +13,9 @@ const SideBar = () => {
         setIsCollapsed(!isCollapsed);
       }}
       isCollapsed={isCollapsed}
-      profileInfo={{
-        imageUrl: "https://randomuser.me/api/portraits/women/90.jpg",
-        name: "Oliver Smith",
-        dropdownProps: [
-          {
-            label: "Edit",
-          },
-        ],
-      }}
-      navLinks={[
-        {
-          icon: Text,
-          label: "Notes",
-          to: "/notes",
-        },
-        {
-          icon: UserCircle,
-          label: "Contacts",
-          to: "/contacts",
-        },
-        {
-          icon: NeetoInsights,
-          label: "Somethng else",
-          to: "/something_else",
-        },
-      ]}
+      profileInfo={PROFILE_INFO}
+      navLinks={NAV_LINKS}
+      organizationInfo={{ logo: <Logo /> }}
     />
   );
 };
