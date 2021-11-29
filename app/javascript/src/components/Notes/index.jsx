@@ -27,6 +27,7 @@ const Notes = () => {
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
     setShowCreatePane(false);
+    Toastr.success("Note created successfully");
   };
   const handleDelete = () => {
     if (typeof notes[selectedNote] !== "undefined") {
