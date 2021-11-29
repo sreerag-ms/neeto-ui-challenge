@@ -1,4 +1,4 @@
-import { Text, NeetoInsights, UserCircle } from "@bigbinary/neeto-icons";
+import { Text, NeetoInsights, UserCircle } from "neetoIcons";
 
 export const NAV_LINKS = [
   {

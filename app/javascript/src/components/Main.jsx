@@ -4,9 +4,9 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import { initializeLogger } from "common/logger";
+import Wrapper from "commonComponents/Wrapper";
 import Contacts from "components/Contacts";
 import Notes from "components/Notes";
-import Wrapper from "components/Wrapper";
 import SideMenuStatusContext from "contexts/sideMenuStatus";
 
 const Main = () => {

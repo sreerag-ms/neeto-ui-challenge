@@ -1,15 +1,8 @@
-export const getTimeElapsed = date2 =>
-  `Created ${Math.floor((Date.now() - date2) / 3600000)} hours ago`;
+import dayjs from "dayjs"; // load on demand
 
-export const timeToHourAndDay = date =>
-  new Date(date).toLocaleString("en-US", {
-    weekday: "long",
-    hour: "numeric",
-    hour12: true,
-  });
-export const timeToDate = date =>
-  new Date(date).toLocaleString("en-US", {
-    month: "short",
-    year: "numeric",
-    day: "numeric",
-  });
+export const getTimeElapsed = date =>
+  `${dayjs(Date.now()).diff(date, "hour")} hours ago`;
+
+export const timeToHourAndDay = date => dayjs(date).format("dddd, h A");
+
+export const timeToDate = date => dayjs(date).format("MMM, D, YYYY");

@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import { Toastr, PageLoader } from "@bigbinary/neetoui/v2";
+import { Toastr, PageLoader } from "neetoui/v2";
 
-import DeletePrompt from "components/Common/DeletePrompt";
-import SideMenu from "components/Common/SideMenu";
-import TitleBar from "components/Common/TitleBar";
+import DeletePrompt from "commonComponents/DeletePrompt";
+import SideMenu from "commonComponents/SideMenu";
+import TitleBar from "commonComponents/TitleBar";
 import CreateNote from "components/Notes/Create";
 import SideMenuStatusContext from "contexts/sideMenuStatus";
 
@@ -12,13 +12,14 @@ import Card from "./Card";
 import { SIDE_MENU_ITEMS, NOTES_DATA } from "./constants";
 
 const Notes = () => {
-  const [showSideMenu, setShowSideMenu] = useContext(SideMenuStatusContext);
+  const [isSideMenuOpen, setIsSideMenuOpen] = useContext(SideMenuStatusContext);
   const [showDeletePrompt, setShowDeletePrompt] = useState(false);
   const [showCreatePane, setShowCreatePane] = useState(false);
   const [selectedNote, setSelectedNote] = useState(-1);
   const [notes, setNotes] = useState([]);
 
-  const toggleSideMenu = () => setShowSideMenu(!showSideMenu);
+  const toggleSideMenu = () =>
+    setIsSideMenuOpen(isSideMenuOpen => !isSideMenuOpen);
   const handleAddButtonClick = () => {
     setShowCreatePane(true);
   };
@@ -58,7 +59,11 @@ const Notes = () => {
 
   return (
     <div className="w-full h-screen flex flex-row">
-      <SideMenu title="Notes" items={SIDE_MENU_ITEMS} showMenu={showSideMenu} />
+      <SideMenu
+        title="Notes"
+        items={SIDE_MENU_ITEMS}
+        showMenu={isSideMenuOpen}
+      />
       <div className="flex flex-col w-full px-5 items-center overflow-auto">
         <div className="flex flex-col w-full max-w-7xl ">
           <TitleBar
