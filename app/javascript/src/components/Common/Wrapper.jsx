@@ -2,7 +2,7 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
-import SideBar from "components/Common/SideBar";
+import SideBar from "commonComponents/SideBar";
 
 const Wrapper = ({ children }) => (
   <div className="w-full h-screen flex flex-row">
