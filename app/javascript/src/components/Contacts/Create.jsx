@@ -5,20 +5,21 @@ import { Check } from "neetoIcons";
 import { Pane, Typography, Button } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
 
-import formInitialValue from "constants/formInitialValues";
-import formValidationSchema from "constants/formValidationSchemas";
-
-import { ROLE_OPTIONS } from "./constants";
+import {
+  ROLE_OPTIONS,
+  CONTACT_FORM_INITIAL_VALUES,
+  CONTACT_FORM_VALIDATION_SCHEMA,
+} from "./constants";
 
 const CreateContact = ({ showPane, setShowPane, onSubmit }) => {
   return (
     <Pane onClose={() => setShowPane(false)} isOpen={showPane}>
       <Formik
-        initialValues={formInitialValue.createContactForm}
+        initialValues={CONTACT_FORM_INITIAL_VALUES}
         onSubmit={onSubmit}
         validateOnChange={false}
         validateOnBlur={false}
-        validationSchema={formValidationSchema.createContactForm}
+        validationSchema={CONTACT_FORM_VALIDATION_SCHEMA}
       >
         {({ isSubmitting }) => (
           <Form>
