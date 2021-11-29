@@ -3,6 +3,7 @@ import React from "react";
 import { Search, Plus } from "neetoIcons";
 import { Input, Button } from "neetoui/v2";
 import { Header } from "neetoui/v2/layouts";
+import PropTypes from "prop-types";
 
 const TitleBar = ({ title, toggleMenu, buttonLabel, onButtonClick }) => (
   <Header
@@ -25,5 +26,11 @@ const TitleBar = ({ title, toggleMenu, buttonLabel, onButtonClick }) => (
     title={title}
   />
 );
+TitleBar.propTypes = {
+  title: PropTypes.string.isRequired,
+  toggleMenu: PropTypes.func.isRequired,
+  buttonLabel: PropTypes.string.isRequired,
+  onButtonClick: PropTypes.func.isRequired,
+};
 
 export default TitleBar;

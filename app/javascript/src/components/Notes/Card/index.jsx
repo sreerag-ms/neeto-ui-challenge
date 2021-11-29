@@ -2,8 +2,6 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
-import { timeToHourAndDay, getTimeElapsed } from "helpers/timeFunctions";
-
 import Body from "./Body";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -17,9 +15,6 @@ const Card = ({
   setShowDeletePrompt,
   setSelectedNote,
 }) => {
-  const timeElapsed = getTimeElapsed(Number(createdAt));
-  const timeCreated = timeToHourAndDay(Number(createdAt));
-
   return (
     <div className="flex flex-col border-2 my-2 p-4 rounded-sm shadow-sm">
       <Header
@@ -29,7 +24,7 @@ const Card = ({
         setSelectedNote={setSelectedNote}
       />
       <Body description={description} />
-      <Footer user={user} timeCreated={timeCreated} timeElapsed={timeElapsed} />
+      <Footer user={user} createdAt={createdAt} />
     </div>
   );
 };
