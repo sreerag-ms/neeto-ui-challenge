@@ -1,17 +1,19 @@
 import React from "react";
 
-import { Check } from "@bigbinary/neeto-icons";
-import { Pane, Typography, Button } from "@bigbinary/neetoui/v2";
-import { Input, Textarea, Select } from "@bigbinary/neetoui/v2/formik";
 import { Formik, Form } from "formik";
+import { Check } from "neetoIcons";
+import { Pane, Typography, Button } from "neetoui/v2";
+import { Input, Textarea, Select } from "neetoui/v2/formik";
 import PropTypes from "prop-types";
 
-import formInitialValue from "constants/formInitialValues";
-import formValidationSchema from "constants/formValidationSchemas";
+import {
+  CONTACT_OPTIONS,
+  TAG_OPTIONS,
+  NOTE_FORM_VALIDATION_SCHEMA,
+  NOTE_FORM_INITIAL_VALUES,
+} from "../constants";
 
-import { CONTACT_OPTIONS, TAG_OPTIONS } from "../constants";
-
-function CreateNote({ showPane, setShowPane, createNote }) {
+const CreateNote = ({ isCreatePaneOpen, setIsCreatePaneOpen, createNote }) => {
   const onSubmit = values => {
     const note = {
       title: values.title.trim(),
@@ -23,13 +25,13 @@ function CreateNote({ showPane, setShowPane, createNote }) {
   };
 
   return (
-    <Pane onClose={() => setShowPane(false)} isOpen={showPane}>
+    <Pane onClose={() => setIsCreatePaneOpen(false)} isOpen={isCreatePaneOpen}>
       <Formik
-        initialValues={formInitialValue.createNoteForm}
+        initialValues={NOTE_FORM_INITIAL_VALUES}
         onSubmit={onSubmit}
         validateOnChange={false}
         validateOnBlur={false}
-        validationSchema={formValidationSchema.createNoteForm}
+        validationSchema={NOTE_FORM_VALIDATION_SCHEMA}
       >
         {({ isSubmitting }) => (
           <Form>
@@ -84,7 +86,7 @@ function CreateNote({ showPane, setShowPane, createNote }) {
               <Button
                 style="text"
                 label="Cancel"
-                onClick={() => setShowPane(false)}
+                onClick={() => setIsCreatePaneOpen(false)}
                 size="large"
               />
             </Pane.Footer>
@@ -93,11 +95,11 @@ function CreateNote({ showPane, setShowPane, createNote }) {
       </Formik>
     </Pane>
   );
-}
+};
 
 CreateNote.propTypes = {
-  showPane: PropTypes.bool.isRequired,
-  setShowPane: PropTypes.func.isRequired,
+  isCreatePaneOpen: PropTypes.bool.isRequired,
+  setIsCreatePaneOpen: PropTypes.func.isRequired,
   createNote: PropTypes.func.isRequired,
 };
 export default CreateNote;

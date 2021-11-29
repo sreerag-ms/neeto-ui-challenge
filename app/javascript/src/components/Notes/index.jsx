@@ -95,8 +95,8 @@ const Notes = () => {
         message="Are you sure you want to delete the note? This action cannot be undone."
       />
       <CreateNote
-        showPane={isCreatePaneOpen}
-        setShowPane={setIsCreatePaneOpen}
+        isCreatePaneOpen={isCreatePaneOpen}
+        setIsCreatePaneOpen={setIsCreatePaneOpen}
         createNote={createNote}
       />
     </div>

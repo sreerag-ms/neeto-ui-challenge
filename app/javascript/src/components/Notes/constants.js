@@ -1,3 +1,5 @@
+import * as Yup from "yup";
+
 export const SIDE_MENU_ITEMS = {
   main: [
     { name: "All", count: 10, active: true },
@@ -62,3 +64,23 @@ export const TAG_OPTIONS = [
   { value: "tag4", label: "Tag Four" },
   { value: "tag5", label: "Tag Five" },
 ];
+
+export const NOTE_FORM_INITIAL_VALUES = {
+  title: "",
+  description: "",
+  contact: null,
+  tags: [],
+};
+
+export const NOTE_FORM_VALIDATION_SCHEMA = Yup.object().shape({
+  title: Yup.string()
+    .max(100, "Maximum 100 charecters")
+    .trim()
+    .required("Required"),
+  description: Yup.string()
+    .max(500, "Maximum 500 charecters")
+    .trim()
+    .required("Required"),
+  contact: Yup.object().required("Required").nullable(),
+  tags: Yup.array().min(1, "Select atleast one item").required("Required"),
+});
