@@ -1,17 +1,15 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Toastr, PageLoader, Alert } from "neetoui/v2";
 
 import SideMenu from "commonComponents/SideMenu";
 import TitleBar from "commonComponents/TitleBar";
 import CreateNote from "components/Notes/Create";
-import SideMenuStatusContext from "contexts/sideMenuStatus";
 
 import Card from "./Card";
 import { SIDE_MENU_ITEMS, NOTES_DATA } from "./constants";
 
-const Notes = () => {
-  const [isSideMenuOpen, setIsSideMenuOpen] = useContext(SideMenuStatusContext);
+const Notes = ({ isSideMenuOpen, setIsSideMenuOpen }) => {
   const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
   const [isCreatePaneOpen, setIsCreatePaneOpen] = useState(false);
   const [selectedNote, setSelectedNote] = useState(-1);

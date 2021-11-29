@@ -7,10 +7,9 @@ import { initializeLogger } from "common/logger";
 import Wrapper from "commonComponents/Wrapper";
 import Contacts from "components/Contacts";
 import Notes from "components/Notes";
-import SideMenuStatusContext from "contexts/sideMenuStatus";
 
 const Main = () => {
-  const [showSideMenu, setShowSideMenu] = useState(false);
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
   useEffect(() => {
     initializeLogger();
@@ -19,15 +18,40 @@ const Main = () => {
   return (
     <BrowserRouter>
       <ToastContainer />
-      <SideMenuStatusContext.Provider value={[showSideMenu, setShowSideMenu]}>
-        <Wrapper>
-          <Switch>
-            <Route exact path="/notes" component={Notes} />
-            <Route exact path="/contacts" component={Contacts} />
-            <Route exact path="/" component={Notes} />
-          </Switch>
-        </Wrapper>
-      </SideMenuStatusContext.Provider>
+      <Wrapper>
+        <Switch>
+          <Route
+            exact
+            path="/notes"
+            render={() => (
+              <Notes
+                isSideMenuOpen={isSideMenuOpen}
+                setIsSideMenuOpen={setIsSideMenuOpen}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/contacts"
+            render={() => (
+              <Contacts
+                isSideMenuOpen={isSideMenuOpen}
+                setIsSideMenuOpen={setIsSideMenuOpen}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Notes
+                isSideMenuOpen={isSideMenuOpen}
+                setIsSideMenuOpen={setIsSideMenuOpen}
+              />
+            )}
+          />
+        </Switch>
+      </Wrapper>
     </BrowserRouter>
   );
 };

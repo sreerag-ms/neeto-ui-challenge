@@ -1,17 +1,15 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Toastr, PageLoader, Alert } from "neetoui/v2";
 
 import SideMenu from "commonComponents/SideMenu";
 import TitleBar from "commonComponents/TitleBar";
-import SideMenuStatusContext from "contexts/sideMenuStatus";
 
 import { SIDE_MENU_ITEMS, TABLE_DATA } from "./constants";
 import CreateContact from "./Create";
 import ListContacts from "./List";
 
-const Contacts = () => {
-  const [isSideMenuOpen, setIsSideMenuOpen] = useContext(SideMenuStatusContext);
+const Contacts = ({ isSideMenuOpen, setIsSideMenuOpen }) => {
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(-1);
   const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
