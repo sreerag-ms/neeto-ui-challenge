@@ -1,21 +1,14 @@
 import React from "react";
 
-import { Search, Plus } from "@bigbinary/neeto-icons";
-import { Input, Button } from "@bigbinary/neetoui/v2";
-import { Header } from "@bigbinary/neetoui/v2/layouts";
+import { Search, Plus } from "neetoIcons";
+import { Input, Button } from "neetoui/v2";
+import { Header } from "neetoui/v2/layouts";
 
-const TitleBar = ({
-  children,
-  title,
-  toggleMenu,
-  buttonLabel,
-  onButtonClick,
-}) => (
+const TitleBar = ({ title, toggleMenu, buttonLabel, onButtonClick }) => (
   <Header
     menuBarToggle={toggleMenu}
     actionBlock={
       <div className="flex flex-row">
-        {children}
         <Input
           prefix={<Search />}
           placeholder="Search for something"
