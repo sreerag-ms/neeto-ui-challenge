@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
-import { Toastr } from "@bigbinary/neetoui/v2";
+import { Toastr, PageLoader } from "@bigbinary/neetoui/v2";
 
 import DeletePrompt from "components/Common/DeletePrompt";
 import SideMenu from "components/Common/SideMenu";
@@ -14,7 +14,7 @@ import ContactsTable from "./Table";
 
 const Contacts = () => {
   const [showSideMenu, setShowSideMenu] = useContext(SideMenuStatusContext);
-  const [contacts, setContacts] = useState(TABLE_DATA);
+  const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(-1);
   const [showDeletePrompt, setShowDeletePrompt] = useState(false);
   const [showCreatePane, setShowCreatePane] = useState(false);
@@ -52,6 +52,18 @@ const Contacts = () => {
     setSelectedContact(-1);
     setShowDeletePrompt(false);
   };
+
+  useEffect(() => {
+    // To demo the loading animation
+    setTimeout(() => {
+      setContacts(TABLE_DATA);
+    }, 500);
+  }, []);
+  // Demo check, does not handle empty array
+  if (!contacts || contacts.length === 0) {
+    return <PageLoader />;
+  }
+
   return (
     <div className="w-full h-screen flex flex-row ">
       <SideMenu
