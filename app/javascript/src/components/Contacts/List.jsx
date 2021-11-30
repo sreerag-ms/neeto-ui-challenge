@@ -1,11 +1,8 @@
 import React from "react";
 
-// Hit a width issue with Neetoui table
-// Using Antd Table, as NeetoUI table is using Antdesign Table inside
-
-import { Table } from "antd";
+// The table slow in resizing when Menubar/SideBar is opened.
 import { MenuHorizontal } from "neetoIcons";
-import { Avatar, Dropdown } from "neetoui/v2";
+import { Avatar, Dropdown, Table } from "neetoui/v2";
 
 import { timeToDate } from "helpers/timeFunctions";
 
@@ -78,17 +75,15 @@ const ListContacts = ({
   ];
 
   return (
-    <div className="flex h-full w-full mt-4 mb-10">
-      <Table
-        columns={tableHeaders}
-        rowSelection={{ type: "checkbox" }}
-        dataSource={contacts}
-        pagination={{
-          showSizeChanger: false,
-        }}
-        rowClassName={(val, index) => index % 2 === 1 && "bg-gray-50"}
-      />
-    </div>
+    <Table
+      columnData={tableHeaders}
+      rowData={contacts}
+      defaultPageSize={10}
+      rowClassName={(val, index) => index % 2 === 1 && "bg-gray-50"}
+      pagination={{
+        showSizeChanger: false,
+      }}
+    />
   );
 };
 

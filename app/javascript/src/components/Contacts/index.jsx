@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Toastr, PageLoader, Alert } from "neetoui/v2";
+import { Container } from "neetoui/v2/layouts";
 
 import SideMenu from "Common/SideMenu";
 import TitleBar from "Common/TitleBar";
@@ -62,40 +63,43 @@ const Contacts = ({ isSideMenuOpen, setIsSideMenuOpen }) => {
   }
 
   return (
-    <div className="w-full h-screen flex flex-row">
-      <SideMenu
-        title="Contacts"
-        items={SIDE_MENU_ITEMS}
-        showMenu={isSideMenuOpen}
-      />
-      <div className="flex flex-col w-full px-5 items-center overflow-auto">
-        <div className="flex flex-col w-full">
-          <TitleBar
-            toggleMenu={toggleSideMenu}
-            buttonLabel="Add Contacts"
-            onButtonClick={handleAddButtonClick}
-            title="All Contacts"
-          />
-          <ListContacts
-            contacts={contacts}
-            setSelectedContact={setSelectedContact}
-            setIsDeleteAlertOpen={setIsDeleteAlertOpen}
-          />
+    /// Added to avoid table overflow issue
+    <Container isHeaderFixed>
+      <div className="w-full h-screen flex flex-row">
+        <SideMenu
+          title="Contacts"
+          items={SIDE_MENU_ITEMS}
+          showMenu={isSideMenuOpen}
+        />
+        <div className="flex flex-col w-full px-5 items-center overflow-auto">
+          <div className="flex flex-col w-full">
+            <TitleBar
+              toggleMenu={toggleSideMenu}
+              buttonLabel="Add Contacts"
+              onButtonClick={handleAddButtonClick}
+              title="All Contacts"
+            />
+            <ListContacts
+              contacts={contacts}
+              setSelectedContact={setSelectedContact}
+              setIsDeleteAlertOpen={setIsDeleteAlertOpen}
+            />
+          </div>
         </div>
+        <Alert
+          isOpen={isDeleteAlertOpen}
+          onSubmit={handleDelete}
+          onClose={handleCancelDelete}
+          title="Delete Contact"
+          message="Are you sure you want to delete this contact? This action cannot be undone."
+        />
+        <CreateContact
+          onSubmit={handleCreateContact}
+          isCreatePaneOpen={isCreatePaneOpen}
+          setIsCreatePaneOpen={setIsCreatePaneOpen}
+        />
       </div>
-      <Alert
-        isOpen={isDeleteAlertOpen}
-        onSubmit={handleDelete}
-        onClose={handleCancelDelete}
-        title="Delete Contact"
-        message="Are you sure you want to delete this contact? This action cannot be undone."
-      />
-      <CreateContact
-        onSubmit={handleCreateContact}
-        isCreatePaneOpen={isCreatePaneOpen}
-        setIsCreatePaneOpen={setIsCreatePaneOpen}
-      />
-    </div>
+    </Container>
   );
 };
 
