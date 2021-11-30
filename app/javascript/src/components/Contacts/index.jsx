@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import { Toastr, PageLoader, Alert } from "neetoui/v2";
 
-import SideMenu from "commonComponents/SideMenu";
-import TitleBar from "commonComponents/TitleBar";
+import SideMenu from "Common/SideMenu";
+import TitleBar from "Common/TitleBar";
 
 import { SIDE_MENU_ITEMS, TABLE_DATA } from "./constants";
 import CreateContact from "./Create";

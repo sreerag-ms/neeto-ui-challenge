@@ -4,7 +4,7 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import { initializeLogger } from "common/logger";
-import Wrapper from "commonComponents/Wrapper";
+import Wrapper from "Common/Wrapper";
 import Contacts from "components/Contacts";
 import Notes from "components/Notes";
 
