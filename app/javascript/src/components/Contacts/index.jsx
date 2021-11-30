@@ -1,27 +1,25 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-import { Toastr, PageLoader, Alert } from "@bigbinary/neetoui/v2";
+import { Toastr, PageLoader, Alert } from "neetoui/v2";
 
-import SideMenu from "components/Common/SideMenu";
-import TitleBar from "components/Common/TitleBar";
-import SideMenuStatusContext from "contexts/sideMenuStatus";
+import SideMenu from "commonComponents/SideMenu";
+import TitleBar from "commonComponents/TitleBar";
 
-import { TABLE_DATA } from "./constants";
-import { SIDE_MENU_ITEMS } from "./constants";
+import { SIDE_MENU_ITEMS, TABLE_DATA } from "./constants";
 import CreateContact from "./Create";
-import ContactsTable from "./Table";
+import ListContacts from "./List";
 
-const Contacts = () => {
-  const [showSideMenu, setShowSideMenu] = useContext(SideMenuStatusContext);
+const Contacts = ({ isSideMenuOpen, setIsSideMenuOpen }) => {
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(-1);
-  const [showDeletePrompt, setShowDeletePrompt] = useState(false);
-  const [showCreatePane, setShowCreatePane] = useState(false);
-  const toggleSideMenu = () => setShowSideMenu(!showSideMenu);
+  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
+  const [isCreatePaneOpen, setIsCreatePaneOpen] = useState(false);
+  const toggleSideMenu = () =>
+    setIsSideMenuOpen(isSideMenuOpen => !isSideMenuOpen);
 
   const handleAddButtonClick = () => {
     logger.log("handleAddButtonClick");
-    setShowCreatePane(true);
+    setIsCreatePaneOpen(true);
   };
   const handleCreateContact = values => {
     const newContact = {
@@ -32,7 +30,7 @@ const Contacts = () => {
       createdAt: Date.now(),
     };
     setContacts([newContact, ...contacts]);
-    setShowCreatePane(false);
+    setIsCreatePaneOpen(false);
     Toastr.success("Contact created successfully");
   };
 
@@ -41,7 +39,7 @@ const Contacts = () => {
       const newContacts = [...contacts];
       newContacts.splice(selectedContact, 1);
       setContacts(newContacts);
-      setShowDeletePrompt(false);
+      setIsDeleteAlertOpen(false);
       Toastr.success("Contact deleted successfully");
     } else {
       Toastr.error("Something went wrong!");
@@ -49,7 +47,7 @@ const Contacts = () => {
   };
   const handleCancelDelete = () => {
     setSelectedContact(-1);
-    setShowDeletePrompt(false);
+    setIsDeleteAlertOpen(false);
   };
 
   useEffect(() => {
@@ -64,11 +62,11 @@ const Contacts = () => {
   }
 
   return (
-    <div className="w-full h-screen flex flex-row ">
+    <div className="w-full h-screen flex flex-row">
       <SideMenu
         title="Contacts"
         items={SIDE_MENU_ITEMS}
-        showMenu={showSideMenu}
+        showMenu={isSideMenuOpen}
       />
       <div className="flex flex-col w-full px-5 items-center overflow-auto">
         <div className="flex flex-col w-full">
@@ -78,15 +76,15 @@ const Contacts = () => {
             onButtonClick={handleAddButtonClick}
             title="All Contacts"
           />
-          <ContactsTable
+          <ListContacts
             contacts={contacts}
             setSelectedContact={setSelectedContact}
-            setShowDeletePrompt={setShowDeletePrompt}
+            setIsDeleteAlertOpen={setIsDeleteAlertOpen}
           />
         </div>
       </div>
       <Alert
-        isOpen={showDeletePrompt}
+        isOpen={isDeleteAlertOpen}
         onSubmit={handleDelete}
         onClose={handleCancelDelete}
         title="Delete Contact"
@@ -94,8 +92,8 @@ const Contacts = () => {
       />
       <CreateContact
         onSubmit={handleCreateContact}
-        showPane={showCreatePane}
-        setShowPane={setShowCreatePane}
+        isCreatePaneOpen={isCreatePaneOpen}
+        setIsCreatePaneOpen={setIsCreatePaneOpen}
       />
     </div>
   );

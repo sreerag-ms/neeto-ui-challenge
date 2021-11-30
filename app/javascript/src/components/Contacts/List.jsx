@@ -3,17 +3,16 @@ import React from "react";
 // Hit a width issue with Neetoui table
 // Using Antd Table, as NeetoUI table is using Antdesign Table inside
 
-import { MenuHorizontal } from "@bigbinary/neeto-icons";
-import { Avatar, Dropdown } from "@bigbinary/neetoui/v2";
 import { Table } from "antd";
-import PropTypes from "prop-types";
+import { MenuHorizontal } from "neetoIcons";
+import { Avatar, Dropdown } from "neetoui/v2";
 
 import { timeToDate } from "helpers/timeFunctions";
 
-const ContactsTable = ({
+const ListContacts = ({
   contacts,
   setSelectedContact,
-  setShowDeletePrompt,
+  setIsDeleteAlertOpen,
 }) => {
   const tableHeaders = [
     {
@@ -65,7 +64,7 @@ const ContactsTable = ({
             <li
               onClick={() => {
                 setSelectedContact(index);
-                setShowDeletePrompt(true);
+                setIsDeleteAlertOpen(true);
               }}
             >
               Delete{" "}
@@ -79,7 +78,7 @@ const ContactsTable = ({
   ];
 
   return (
-    <div className="flex h-full w-full mt-4 mb-10 ">
+    <div className="flex h-full w-full mt-4 mb-10">
       <Table
         columns={tableHeaders}
         rowSelection={{ type: "checkbox" }}
@@ -92,9 +91,5 @@ const ContactsTable = ({
     </div>
   );
 };
-ContactsTable.propTypes = {
-  contacts: PropTypes.array.isRequired,
-  setSelectedContact: PropTypes.func.isRequired,
-  setShowDeletePrompt: PropTypes.func.isRequired,
-};
-export default ContactsTable;
+
+export default ListContacts;

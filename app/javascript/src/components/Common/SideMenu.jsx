@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 const SideMenu = ({ title, items, showMenu }) => (
   <MenuBar showMenu={showMenu} title={title}>
-    {(items.main ?? []).map((item, index) => (
+    {items.main.map((item, index) => (
       <MenuBar.Block
         label={item.name}
         count={item.count}

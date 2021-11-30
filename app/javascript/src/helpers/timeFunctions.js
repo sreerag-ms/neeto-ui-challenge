@@ -1,4 +1,4 @@
-import dayjs from "dayjs"; // load on demand
+import dayjs from "dayjs";
 
 export const getTimeElapsed = date =>
   `${dayjs(Date.now()).diff(date, "hour")} hours ago`;
