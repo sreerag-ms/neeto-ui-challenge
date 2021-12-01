@@ -23,7 +23,7 @@ const Card = ({
         setIsDeleteAlertOpen={setIsDeleteAlertOpen}
         setSelectedNote={setSelectedNote}
       />
-      <Body description={description} />
+      <Body>{description}</Body>
       <Footer user={user} createdAt={createdAt} />
     </div>
   );

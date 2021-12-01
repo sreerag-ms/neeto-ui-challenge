@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import { Toastr, PageLoader, Alert } from "neetoui/v2";
 
-import SideMenu from "commonComponents/SideMenu";
-import TitleBar from "commonComponents/TitleBar";
+import SideMenu from "Common/SideMenu";
+import TitleBar from "Common/TitleBar";
 import CreateNote from "components/Notes/Create";
 
 import Card from "./Card";
